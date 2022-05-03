@@ -6,13 +6,13 @@ import Controls from './Controls'
 import { useState } from 'react';
 
 function App() {
-  const [array, setArray] = useState()
+  const [arrayLength, setArrayLength] = useState()
   const [sortType, setSortType] = useState()
 
   return (
     <div className="App">
-      <Controls setArray={setArray} setSortType={setSortType}></Controls>
-      <Vizualizer></Vizualizer>
+      <Controls setArrayLength={setArrayLength} setSortType={setSortType}></Controls>
+      <Vizualizer arrayLength={arrayLength} sortType={sortType}></Vizualizer>
     </div>
   );
 }

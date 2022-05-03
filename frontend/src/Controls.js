@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import {Dropdown, InputGroup, FormControl, Button, Form} from 'react-bootstrap'
-function Controls({setArray, setSortType}) {
+
+function Controls({setArrayLength, setSortType}) {
 
   function handleChangeSlider(event) {
     let value = event.target.value
     console.log(value)
-    setArray(value)
+    setArrayLength(value)
   }
 
   function handleChangeType(type) {

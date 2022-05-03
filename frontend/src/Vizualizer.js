@@ -1,10 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 
-function Vizualizer() {
+function Vizualizer({sortType, arrayLength}) {
+  let array = []
+  for(let i = 0; i <= arrayLength; i++){
+    array.push(Math.floor(Math.random(0, 1)*100))
+  }
+
   return (
-    <div>
-      <h1>Vizualizer</h1>
+    <div className="vizualizerContainer">
+      {array.map((item) => {
+        return(
+        <div style={{backgroundColor: "blue", height: `${item*5}px`, width: `${array.length}`}}>{item}</div>
+        )
+      })}
     </div>
   );
 }
