@@ -3,11 +3,15 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Vizualizer from './Vizualizer'
 import Controls from './Controls'
+import { useState } from 'react';
 
 function App() {
+  const [array, setArray] = useState()
+  const [sortType, setSortType] = useState()
+
   return (
     <div className="App">
-      <Controls></Controls>
+      <Controls setArray={setArray} setSortType={setSortType}></Controls>
       <Vizualizer></Vizualizer>
     </div>
   );
