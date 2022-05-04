@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Dropdown, InputGroup, FormControl, Button, Form} from 'react-bootstrap'
 
-function Controls({setArrayLength, setSortType}) {
+function Controls({setStart, setArrayLength, setSortType}) {
 
   function handleChangeSlider(event) {
     let value = event.target.value
@@ -34,6 +34,7 @@ function Controls({setArrayLength, setSortType}) {
         <Form.Label>Size of Array</Form.Label>
         <Form.Range onChange={handleChangeSlider}/>
       </InputGroup>
+      <Button onClick={()=>setStart(true)}>Start</Button>
     <h1>Controls</h1>
     </div>
   );

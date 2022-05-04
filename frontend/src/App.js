@@ -8,11 +8,12 @@ import { useState } from 'react';
 function App() {
   const [arrayLength, setArrayLength] = useState()
   const [sortType, setSortType] = useState()
+  const [start, setStart] = useState()
 
   return (
     <div className="App">
-      <Controls setArrayLength={setArrayLength} setSortType={setSortType}></Controls>
-      <Vizualizer arrayLength={arrayLength} sortType={sortType}></Vizualizer>
+      <Controls setStart={setStart} setArrayLength={setArrayLength} setSortType={setSortType}></Controls>
+      <Vizualizer start={start} arrayLength={arrayLength} sortType={sortType}></Vizualizer>
     </div>
   );
 }
