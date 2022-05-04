@@ -7,6 +7,23 @@ function Vizualizer({sortType, arrayLength}) {
     array.push(Math.floor(Math.random(0, 1)*100))
   }
 
+  const selectionSort = (array) => {
+    let holder
+    for (let i = 0 ; i <= array.length; i++){
+      for (let j = 0 ; j <= array.length; j++){
+        if(array[j] > array[i]){
+          holder = array[i]
+          array[i] = array[j]
+          array[j] = holder
+        }
+      }
+    }
+    return(array)
+  }
+
+
+  console.log((array))
+  console.log(selectionSort(array))
   return (
     <div className="vizualizerContainer">
       {array.map((item) => {
