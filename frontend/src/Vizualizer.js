@@ -24,23 +24,38 @@ function Vizualizer({start, sortType, arrayLength}) {
   async function selectionSort (array) {
     let holder
     let heightHolder
-    for (let i = 0 ; i <= array.length; i++){
-        document.getElementById(`${i}`).style.backgroundColor = 'green' ;
-        await timer(100);
-        console.log('ding')
-        // for (let j = 0 ; j <= array.length; j++){
-        //   await timer(100);
-        //   document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
-        //   if(array[j] > array[i]){
-        //     holder = array[i]
-        //     array[i] = array[j]
-        //     array[j] = holder
-        //     // document.getElementById(`${i}`).style.backgroundColor = 'yellow' ;
-        //     // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
+    console.log(array)
 
-        //   }
-        // }
-        document.getElementById(`${i}`).style.backgroundColor = 'blue' ;
+    for (let i = 0 ; i < array.length; i++){
+        // document.getElementById(`${i}`).style.backgroundColor = 'green' ;
+        await timer(300);
+        // console.log('ding')
+        for (let j = 0 ; j <= array.length; j++){
+                      document.getElementById(`${i}`).style.backgroundColor = 'green' ;
+
+          // console.log(j)
+          if(j > i){
+            // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
+          }
+
+          if(array[j] > array[i]){
+            await timer(100);
+                        document.getElementById(`${j}`).style.backgroundColor = 'red' ;
+            holder = array[i]
+            heightHolder = `${array[i]*5}px`
+
+            array[i] = array[j]
+            document.getElementById(`${i}`).style.height = `${array[j]*5}px`
+
+            array[j] = holder
+            document.getElementById(`${j}`).style.height = heightHolder
+            console.log(heightHolder)
+            // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
+            
+          }
+
+        }
+        // document.getElementById(`${i}`).style.backgroundColor = 'blue' ;
     }
     console.log(array)
     return(array)
