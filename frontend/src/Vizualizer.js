@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import $ from 'jquery';
 
 function Vizualizer({start, sortType, arrayLength}) {
   
@@ -11,26 +12,37 @@ function Vizualizer({start, sortType, arrayLength}) {
     }
     return(temp)
   }
-  // let array = createArray()
-  const [array, setarray] = useState([createArray()])
-
+  let array = createArray()
+  const [sortedArray, setSortedArray] = useState([createArray()])
 
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  const selectionSort = (array) => {
-    let holder
-    for (let i = 0 ; i <= array.length; i++){
+  const timer = ms => new Promise(res => setTimeout(res, ms))
 
-      for (let j = 0 ; j <= array.length; j++){
-        if(array[j] > array[i]){
-          holder = array[i]
-          array[i] = array[j]
-          array[j] = holder
-        }
-      }
+  async function selectionSort (array) {
+    let holder
+    let heightHolder
+    for (let i = 0 ; i <= array.length; i++){
+        document.getElementById(`${i}`).style.backgroundColor = 'green' ;
+        await timer(100);
+        console.log('ding')
+        // for (let j = 0 ; j <= array.length; j++){
+        //   await timer(100);
+        //   document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
+        //   if(array[j] > array[i]){
+        //     holder = array[i]
+        //     array[i] = array[j]
+        //     array[j] = holder
+        //     // document.getElementById(`${i}`).style.backgroundColor = 'yellow' ;
+        //     // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
+
+        //   }
+        // }
+        document.getElementById(`${i}`).style.backgroundColor = 'blue' ;
     }
+    console.log(array)
     return(array)
   }
 
@@ -42,9 +54,9 @@ function Vizualizer({start, sortType, arrayLength}) {
 
   return (
     <div className="vizualizerContainer">
-      {array.map((item) => {
+      {array.map((item, index) => {
         return(
-        <div style={{backgroundColor: "blue", height: `${item*5}px`, width: `${array.length}`}}>{item}</div>
+        <div className="unsorted" style={{height: `${item*5}px`, width: `${array.length}`}} id={index}>{item}</div>
         )
       })}
     </div>
