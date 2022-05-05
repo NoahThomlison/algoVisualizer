@@ -35,6 +35,7 @@ function Controls({setStart, setArrayLength, setSortType}) {
         <Form.Range onChange={handleChangeSlider}/>
       </InputGroup>
       <Button onClick={()=>setStart(true)}>Start</Button>
+      <Button onClick={()=>setStart(true)}>Reset</Button>
     <h1>Controls</h1>
     </div>
   );
