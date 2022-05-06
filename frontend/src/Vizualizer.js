@@ -6,7 +6,11 @@ function Vizualizer({start, sortType, arrayLength}) {
   const createArray = () => {
     let temp = []
     for(let i = 0; i <= arrayLength; i++){
-      temp.push(Math.floor(Math.random(0, 1)*100))
+      let number = (Math.floor(Math.random(0, 1)*100))
+      if(number === 0) {
+        number++
+      }
+      temp.push(number)
     }
     return(temp)
   }
@@ -29,30 +33,34 @@ function Vizualizer({start, sortType, arrayLength}) {
     let heightHolder
     console.log(array.length)
     console.log(array)
-
+    let delay = 1
     for (let i = 0 ; i < array.length; i++){
-        changeColor(i, "green")
-        // await timer(300);
-        for (let j = 0 ; j < array.length; j++){
-          if(j > i){
-          }
-          if(array[j] > array[i]){
+      console.log("new row")
+        // changeColor(i, "green")
+        // await timer(delay);
+        for (let j = (i + 1) ; j < array.length; j++){
+          // changeColor(j, "red")
+          // await timer(delay);
+          if(array[i] > array[j]){
+            console.log(array[i])
+            console.log(`${array[i]} > ${array[j]}`)
             holder = array[i]
-            minIndex = i
-            changeColor(i, "red")
-          }
-          if(j === array.length-1){
-            console.log(array[minIndex])
             heightHolder = `${array[i]*5}px`
+
             array[i] = array[j]
+            document.getElementById(`${i}`).innerText = array[j]
             document.getElementById(`${i}`).style.height = `${array[j]*5}px`
+
             array[j] = holder
+            document.getElementById(`${j}`).innerText = holder
             document.getElementById(`${j}`).style.height = heightHolder
 
           }
+          // changeColor(j, "blue")
+          // await timer(delay);
         }
-        // await timer(300);
-        changeColor(i, "blue")
+        // await timer(delay);
+        // changeColor(i, "blue")
 
     }
     console.log(array)
@@ -66,12 +74,18 @@ function Vizualizer({start, sortType, arrayLength}) {
   }
 
   return (
-    <div className="vizualizerContainer">
-      {array.map((item, index) => {
-        return(
-        <div className="unsorted" style={{height: `${item*5}px`, width: `${array.length}`}} id={index}>{item}</div>
-        )
-      })}
+    <div className="vizualizerWrapper">
+      <div className="vizualizerContainer">
+        {array.map((item, index) => {
+          return(
+          <div className="unsorted" style={{height: `${item*5}px`}} id={index}>
+            <div>
+            <h6 className='value'>{item}</h6>
+            </div>
+          </div>
+          )
+        })}
+      </div>
     </div>
   );
 }
