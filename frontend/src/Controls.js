@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Dropdown, InputGroup, FormControl, Button, Form} from 'react-bootstrap'
 
