@@ -19,41 +19,41 @@ function Vizualizer({start, sortType, arrayLength}) {
 
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
+  const changeColor = (targer, color) => {
+    document.getElementById(`${targer}`).style.backgroundColor = `${color}`;
+
+  }
   async function selectionSort (array) {
+    let minIndex 
     let holder
     let heightHolder
+    console.log(array.length)
     console.log(array)
 
     for (let i = 0 ; i < array.length; i++){
-        // document.getElementById(`${i}`).style.backgroundColor = 'green' ;
-        await timer(300);
-        // console.log('ding')
-        for (let j = 0 ; j <= array.length; j++){
-                      document.getElementById(`${i}`).style.backgroundColor = 'green' ;
-
-          // console.log(j)
+        changeColor(i, "green")
+        // await timer(300);
+        for (let j = 0 ; j < array.length; j++){
           if(j > i){
-            // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
           }
-
           if(array[j] > array[i]){
-            await timer(100);
-                        document.getElementById(`${j}`).style.backgroundColor = 'red' ;
             holder = array[i]
+            minIndex = i
+            changeColor(i, "red")
+          }
+          if(j === array.length-1){
+            console.log(array[minIndex])
             heightHolder = `${array[i]*5}px`
-
             array[i] = array[j]
             document.getElementById(`${i}`).style.height = `${array[j]*5}px`
-
             array[j] = holder
             document.getElementById(`${j}`).style.height = heightHolder
-            console.log(heightHolder)
-            // document.getElementById(`${j}`).style.backgroundColor = 'yellow' ;
-            
-          }
 
+          }
         }
-        // document.getElementById(`${i}`).style.backgroundColor = 'blue' ;
+        // await timer(300);
+        changeColor(i, "blue")
+
     }
     console.log(array)
     return(array)
