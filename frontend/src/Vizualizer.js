@@ -2,6 +2,9 @@ import './App.css';
 import { useState } from 'react';
 
 function Vizualizer({array, setArray, start, sortType, arrayLength}) {
+  let blue = 5
+  let red = 2
+  let green = 3
   const timer = ms => new Promise(res => setTimeout(res, ms))
   const changeColor = (targer, color) => {
     document.getElementById(`${targer}`).style.backgroundColor = `${color}`;
@@ -32,9 +35,9 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
             document.getElementById(`${j}`).innerText = holder
             document.getElementById(`${j}`).style.height = heightHolder
           }
-          changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*5}, ${ document.getElementById(`${i}`).innerText*3}, ${ document.getElementById(`${i}`).innerText*2})`)
+          changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*red}, ${ document.getElementById(`${i}`).innerText*green}, ${ document.getElementById(`${i}`).innerText*blue})`)
           await timer(delay);
-          changeColor(j, `rgb(${document.getElementById(`${j}`).innerText*5}, ${document.getElementById(`${j}`).innerText*3}, ${document.getElementById(`${j}`).innerText*2})`)
+          changeColor(j, `rgb(${document.getElementById(`${j}`).innerText*red}, ${document.getElementById(`${j}`).innerText*green}, ${document.getElementById(`${j}`).innerText*blue})`)
           await timer(delay);
         }
       console.log(array)
@@ -52,7 +55,7 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
       <div className="vizualizerContainer">
         {array.map((item, index) => {
           return(
-          <div className="unsorted" style={{backgroundColor: `rgb(${item*5}, ${item*3}, ${item*2})` , height: `${item*5}px`}} id={index}>
+          <div className="unsorted" style={{backgroundColor: `rgb(${item*red}, ${item*green}, ${item*blue})` , height: `${item*5}px`}} id={index}>
             <div>
             <h6 className='value'>{item}</h6>
             </div>
