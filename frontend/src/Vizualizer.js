@@ -17,8 +17,6 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
     for (let i = 0 ; i < array.length; i++){
         let holder
         let heightHolder
-        changeColor(i, "green")
-        await timer(delay);
         for (let j = (i + 1) ; j < array.length; j++){
           changeColor(j, "red")
           await timer(delay);
@@ -34,7 +32,9 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
             document.getElementById(`${j}`).innerText = holder
             document.getElementById(`${j}`).style.height = heightHolder
           }
-          changeColor(j, "blue")
+          changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*5}, ${ document.getElementById(`${i}`).innerText*3}, ${ document.getElementById(`${i}`).innerText*2})`)
+          await timer(delay);
+          changeColor(j, `rgb(${document.getElementById(`${j}`).innerText*5}, ${document.getElementById(`${j}`).innerText*3}, ${document.getElementById(`${j}`).innerText*2})`)
           await timer(delay);
         }
       console.log(array)
@@ -52,7 +52,7 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
       <div className="vizualizerContainer">
         {array.map((item, index) => {
           return(
-          <div className="unsorted" style={{height: `${item*5}px`}} id={index}>
+          <div className="unsorted" style={{backgroundColor: `rgb(${item*5}, ${item*3}, ${item*2})` , height: `${item*5}px`}} id={index}>
             <div>
             <h6 className='value'>{item}</h6>
             </div>
