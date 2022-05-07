@@ -2,7 +2,7 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Vizualizer from './Vizualizer'
 import Controls from './Controls'
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 
 function App() {
   const createArray = () => {
@@ -22,10 +22,16 @@ function App() {
   const [start, setStart] = useState(false)
   const [array, setArray] = useState(createArray())
 
+  useEffect(() => {
+    setArray(createArray())
+    // document.title = `You clicked ${count} times`;
+  },[arrayLength]);
+
   return (
     <div className="App">
+      <h1>{array.length}</h1>
       <Controls setStart={setStart} setArrayLength={setArrayLength} setSortType={setSortType} setArray={setArray}></Controls>
-      {/* <Vizualizer setArray={setArray} array={array} start={start} arrayLength={arrayLength} sortType={sortType}></Vizualizer> */}
+      <Vizualizer array={array} start={start} arrayLength={arrayLength} sortType={sortType}></Vizualizer>
     </div>
   );
 }

@@ -15,17 +15,14 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
     console.log(array)
     let delay = 1
     for (let i = 0 ; i < array.length; i++){
-      setTimeout(function timer() {
         let holder
         let heightHolder
         changeColor(i, "green")
-        // await timer(delay);
+        await timer(delay);
         for (let j = (i + 1) ; j < array.length; j++){
           changeColor(j, "red")
-          // await timer(delay);
+          await timer(delay);
           if(array[i] > array[j]){
-            // console.log(array[i])
-            // console.log(`${array[i]} > ${array[j]}`)
             holder = array[i]
             heightHolder = `${array[i]*5}px`
 
@@ -38,9 +35,8 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
             document.getElementById(`${j}`).style.height = heightHolder
           }
           changeColor(j, "blue")
-          // await timer(delay);
+          await timer(delay);
         }
-      }, i * 100);
       console.log(array)
     }
     return(array)
