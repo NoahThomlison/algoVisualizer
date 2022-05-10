@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import selectionSort from './helperFunctions/selectionSort';
 
 function Vizualizer({array, setArray, start, sortType, arrayLength}) {
