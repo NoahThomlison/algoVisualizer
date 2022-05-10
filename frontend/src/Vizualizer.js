@@ -16,32 +16,46 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
  
   async function selectionSort (array) {
     console.log(array)
-    let delay = 1
+    let delay = 10
+    let minIndex
+    let holder
+    let heightHolder
     for (let i = 0 ; i < array.length; i++){
-        let holder
-        let heightHolder
+        minIndex = i
         for (let j = (i + 1) ; j < array.length; j++){
           changeColor(j, "red")
           await timer(delay);
-          if(array[i] > array[j]){
-            holder = array[i]
-            heightHolder = `${array[i]*5}px`
-
-            array[i] = array[j]
-            document.getElementById(`${i}`).innerText = array[j]
-            document.getElementById(`${i}`).style.height = `${array[j]*5}px`
-
-            array[j] = holder
-            document.getElementById(`${j}`).innerText = holder
-            document.getElementById(`${j}`).style.height = heightHolder
+          if(array[minIndex] >= array[j]){
+            minIndex = j
           }
-          changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*red}, ${ document.getElementById(`${i}`).innerText*green}, ${ document.getElementById(`${i}`).innerText*blue})`)
-          await timer(delay);
           changeColor(j, `rgb(${document.getElementById(`${j}`).innerText*red}, ${document.getElementById(`${j}`).innerText*green}, ${document.getElementById(`${j}`).innerText*blue})`)
-          await timer(delay);
         }
-      console.log(array)
+        await timer(delay);
+        holder = array[i]
+        heightHolder = `${array[i]*5}px`
+        await timer(delay);
+        document.getElementById(`${i}`).innerText = array[minIndex]
+        array[i] = array[minIndex]
+        await timer(delay);
+        document.getElementById(`${i}`).style.height = `${array[minIndex]*5}px`
+        await timer(delay);
+        document.getElementById(`${minIndex}`).innerText = holder
+        array[minIndex] = holder
+
+        await timer(delay);
+        document.getElementById(`${minIndex}`).style.height = heightHolder
+        await timer(delay);
+ 
+        console.log(`holder: ${holder}, array[i]:${array[i]}, array[minIndex]:${array[minIndex]}`)
+
+        changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*red}, ${ document.getElementById(`${i}`).innerText*green}, ${ document.getElementById(`${i}`).innerText*blue})`)
+        await timer(delay);
+        changeColor(minIndex, `rgb(${document.getElementById(`${minIndex}`).innerText*red}, ${document.getElementById(`${minIndex}`).innerText*green}, ${document.getElementById(`${minIndex}`).innerText*blue})`)
+        console.log(array)
+
     }
+      console.log(array)
+
     return(array)
   }
 
