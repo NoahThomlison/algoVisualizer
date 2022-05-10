@@ -9,10 +9,6 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
   const changeColor = (targer, color) => {
     document.getElementById(`${targer}`).style.backgroundColor = `${color}`;
   }
-  
-  function delayFun(){
-    setTimeout(function()  { console.log("Jacob"); }, 300); 
- }
  
   async function selectionSort (array) {
     console.log(array)
@@ -30,32 +26,21 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
           }
           changeColor(j, `rgb(${document.getElementById(`${j}`).innerText*red}, ${document.getElementById(`${j}`).innerText*green}, ${document.getElementById(`${j}`).innerText*blue})`)
         }
-        await timer(delay);
         holder = array[i]
         heightHolder = `${array[i]*5}px`
         await timer(delay);
         document.getElementById(`${i}`).innerText = array[minIndex]
         array[i] = array[minIndex]
-        await timer(delay);
         document.getElementById(`${i}`).style.height = `${array[minIndex]*5}px`
         await timer(delay);
         document.getElementById(`${minIndex}`).innerText = holder
         array[minIndex] = holder
-
-        await timer(delay);
         document.getElementById(`${minIndex}`).style.height = heightHolder
         await timer(delay);
- 
-        console.log(`holder: ${holder}, array[i]:${array[i]}, array[minIndex]:${array[minIndex]}`)
-
         changeColor(i, `rgb(${ document.getElementById(`${i}`).innerText*red}, ${ document.getElementById(`${i}`).innerText*green}, ${ document.getElementById(`${i}`).innerText*blue})`)
         await timer(delay);
         changeColor(minIndex, `rgb(${document.getElementById(`${minIndex}`).innerText*red}, ${document.getElementById(`${minIndex}`).innerText*green}, ${document.getElementById(`${minIndex}`).innerText*blue})`)
-        console.log(array)
-
     }
-      console.log(array)
-
     return(array)
   }
 
@@ -63,7 +48,6 @@ function Vizualizer({array, setArray, start, sortType, arrayLength}) {
     selectionSort(array)
   }
   
-
   return (
     <div className="vizualizerWrapper">
       <div className="vizualizerContainer">
