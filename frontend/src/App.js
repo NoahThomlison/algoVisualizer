@@ -17,7 +17,7 @@ function App() {
     return(temp)
   }
 
-  const [arrayLength, setArrayLength] = useState(100)
+  const [arrayLength, setArrayLength] = useState(25)
   const [sortType, setSortType] = useState()
   const [start, setStart] = useState(false)
   const [array, setArray] = useState(createArray())
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <h1>{array.length}</h1>
-      <Controls setStart={setStart} setArrayLength={setArrayLength} setSortType={setSortType} setArray={setArray}></Controls>
+      <Controls createArray={createArray} setStart={setStart} setArrayLength={setArrayLength} setSortType={setSortType} setArray={setArray}></Controls>
       <Vizualizer array={array} start={start} arrayLength={arrayLength} sortType={sortType}></Vizualizer>
     </div>
   );

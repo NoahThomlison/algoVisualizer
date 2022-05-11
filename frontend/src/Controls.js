@@ -1,7 +1,7 @@
 import './App.css';
 import {Dropdown, InputGroup, FormControl, Button, Form} from 'react-bootstrap'
 
-function Controls({setStart, setArrayLength, setSortType}) {
+function Controls({createArray, setStart, setArrayLength, setSortType, setArray}) {
 
   function handleChangeSlider(event) {
     let value = event.target.value
@@ -13,6 +13,13 @@ function Controls({setStart, setArrayLength, setSortType}) {
     console.log(type)
     setSortType(type)
   }
+  
+  function reset() {
+    setArrayLength(25)
+    setArray(createArray())
+    setStart(false)
+  }
+
 
   return (
     <div>
@@ -34,7 +41,7 @@ function Controls({setStart, setArrayLength, setSortType}) {
         <Form.Range onChange={handleChangeSlider}/>
       </InputGroup>
       <Button onClick={()=>setStart(true)}>Start</Button>
-      <Button onClick={()=>setStart(true)}>Reset</Button>
+      <Button onClick={()=>reset()}>Reset</Button>
     <h1>Controls</h1>
     </div>
   );
