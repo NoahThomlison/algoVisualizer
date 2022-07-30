@@ -1,9 +1,8 @@
 import changeColor from './changeColor';
 import timer from './timer'
 
-async function selectionSort (array, blue, red, green) {
+async function selectionSort (array, blue, red, green, delay) {
   console.log(array)
-  let delay = 10
   let minIndex
   let holder
   let heightHolder
